@@ -9,7 +9,11 @@ import transactionRoutes from './routes/transactionRoute.js';
 const app = express();
 connectDB();
 
-app.use(cors());
+app.use(cors({
+  origin: 'http://localhost:8000',
+  credentials: true
+}));
+
 app.use(bodyParser.json());
 
 app.use('/api', userRoutes);

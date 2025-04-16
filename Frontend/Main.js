@@ -123,13 +123,16 @@ loginForm.addEventListener("submit", async (e) => {
         
         if (res.ok) {
             localStorage.setItem("userId", result.userId);
+            localStorage.setItem("cardNumber", result.cardNumber);
+            localStorage.setItem("userEmail", result.email); // optional
+        
             alert("Login successful!");
             loginModal.style.display = "none";
             document.body.style.overflow = "auto";
-
-            // Redirect to profile page after successful login
-            window.location.href = "F:/MUSKAN/Projects/Project Exhibition 2/Fraud-Eye/Frontend/Profile/index.html";  // This will redirect to /profile page
-        } else {
+        
+            window.location.href = "F:/MUSKAN/Projects/Project Exhibition 2/Fraud-Eye/Frontend/Profile/index.html";
+        }        
+         else {
             alert(result.message || "Login failed");
         }
     } catch (err) {

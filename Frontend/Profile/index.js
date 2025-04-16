@@ -12,7 +12,7 @@ document.querySelector("form").addEventListener("submit", async function (e) {
   };
 
   try {
-    const res = await fetch("http://localhost:5000/api/submit", {
+    const res = await fetch("http://127.0.0.1:5000/api/submit", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -23,6 +23,18 @@ document.querySelector("form").addEventListener("submit", async function (e) {
     const result = await res.json();
     if (res.ok) {
       alert("User submitted successfully!");
+
+      // After successful submission, store user details in localStorage
+      localStorage.setItem("firstName", formData.firstName);
+      localStorage.setItem("lastName", formData.lastName);
+      localStorage.setItem("age", formData.age);
+      localStorage.setItem("email", formData.email);
+      localStorage.setItem("phone", formData.phone);
+      localStorage.setItem("cardNumber", formData.cardNumber);
+      localStorage.setItem("cardExpiry", formData.cardExpiry);
+
+      // Optionally, you can store the userId if it's returned by the backend
+      // localStorage.setItem("userId", result.userId);  // If userId is part of the response
     } else {
       alert("Submission failed: " + result.message);
     }

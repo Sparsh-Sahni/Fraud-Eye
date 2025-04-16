@@ -1,65 +1,1984 @@
-// Add hovered class to selected list item
-let list = document.querySelectorAll(".navigation li");
+async function populateTable() {
+  const transactions = [
+    {
+      "Transaction Amount": 1678.67,
+      "Location": "Seattle",
+      "Time": "16-10-2024 16:01",
+      "Merchant Category": "Grocery",
+      "Device/IP": "Desktop-118.254.137.173",
+      "Logic Patterns": 0,
+      "Velocity": 1,
+      "Card Present": 1,
+      "Declined Transactions": 0,
+      "Fraud Label": 1
+    },
+    {
+      "Transaction Amount": 687.64,
+      "Location": "Seattle",
+      "Time": "10-02-2025 16:01",
+      "Merchant Category": "Online Services",
+      "Device/IP": "Tablet-96.138.141.30",
+      "Logic Patterns": 0,
+      "Velocity": 7,
+      "Card Present": 0,
+      "Declined Transactions": 4,
+      "Fraud Label": 1
+    },
+    {
+      "Transaction Amount": 4589.03,
+      "Location": "San Francisco",
+      "Time": "08-12-2024 16:01",
+      "Merchant Category": "Travel",
+      "Device/IP": "Desktop-47.218.211.211",
+      "Logic Patterns": 0,
+      "Velocity": 7,
+      "Card Present": 1,
+      "Declined Transactions": 2,
+      "Fraud Label": 0
+    },
+    {
+      "Transaction Amount": 719.96,
+      "Location": "New York",
+      "Time": "03-07-2024 16:01",
+      "Merchant Category": "Grocery",
+      "Device/IP": "Tablet-63.174.150.82",
+      "Logic Patterns": 0,
+      "Velocity": 9,
+      "Card Present": 1,
+      "Declined Transactions": 3,
+      "Fraud Label": 1
+    },
+    {
+      "Transaction Amount": 3383.79,
+      "Location": "New York",
+      "Time": "22-12-2024 16:01",
+      "Merchant Category": "Grocery",
+      "Device/IP": "Tablet-54.135.213.242",
+      "Logic Patterns": 0,
+      "Velocity": 2,
+      "Card Present": 1,
+      "Declined Transactions": 4,
+      "Fraud Label": 0
+    },
+    {
+      "Transaction Amount": 1234.50,
+      "Location": "Chicago",
+      "Time": "01-09-2024 10:45",
+      "Merchant Category": "Electronics",
+      "Device/IP": "Mobile-23.56.78.90",
+      "Logic Patterns": 1,
+      "Velocity": 4,
+      "Card Present": 1,
+      "Declined Transactions": 0,
+      "Fraud Label": 0
+    },
+    {
+      "Transaction Amount": 945.00,
+      "Location": "Houston",
+      "Time": "05-10-2024 15:30",
+      "Merchant Category": "Fashion",
+      "Device/IP": "Desktop-12.34.56.78",
+      "Logic Patterns": 0,
+      "Velocity": 6,
+      "Card Present": 0,
+      "Declined Transactions": 2,
+      "Fraud Label": 1
+    },
+    {
+      "Transaction Amount": 234.89,
+      "Location": "Denver",
+      "Time": "14-11-2024 08:20",
+      "Merchant Category": "Dining",
+      "Device/IP": "Tablet-98.76.54.32",
+      "Logic Patterns": 0,
+      "Velocity": 2,
+      "Card Present": 1,
+      "Declined Transactions": 0,
+      "Fraud Label": 0
+    },
+    {
+      "Transaction Amount": 1100.00,
+      "Location": "Boston",
+      "Time": "28-12-2024 17:00",
+      "Merchant Category": "Grocery",
+      "Device/IP": "Mobile-11.22.33.44",
+      "Logic Patterns": 0,
+      "Velocity": 3,
+      "Card Present": 1,
+      "Declined Transactions": 1,
+      "Fraud Label": 1
+    },
+    {
+      "Transaction Amount": 760.00,
+      "Location": "Los Angeles",
+      "Time": "18-01-2025 14:10",
+      "Merchant Category": "Transport",
+      "Device/IP": "Desktop-55.66.77.88",
+      "Logic Patterns": 1,
+      "Velocity": 5,
+      "Card Present": 0,
+      "Declined Transactions": 2,
+      "Fraud Label": 1
+    },
+    {
+      "Transaction Amount": 389.55,
+      "Location": "Miami",
+      "Time": "10-08-2024 12:30",
+      "Merchant Category": "Groceries",
+      "Device/IP": "Mobile-19.29.39.49",
+      "Logic Patterns": 0,
+      "Velocity": 1,
+      "Card Present": 1,
+      "Declined Transactions": 0,
+      "Fraud Label": 0
+    },
+    {
+      "Transaction Amount": 2123.00,
+      "Location": "Austin",
+      "Time": "12-09-2024 11:15",
+      "Merchant Category": "Electronics",
+      "Device/IP": "Desktop-99.88.77.66",
+      "Logic Patterns": 1,
+      "Velocity": 4,
+      "Card Present": 1,
+      "Declined Transactions": 1,
+      "Fraud Label": 0
+    },
+    {
+      "Transaction Amount": 1456.67,
+      "Location": "Phoenix",
+      "Time": "30-10-2024 13:50",
+      "Merchant Category": "Fashion",
+      "Device/IP": "Tablet-67.89.12.34",
+      "Logic Patterns": 0,
+      "Velocity": 3,
+      "Card Present": 1,
+      "Declined Transactions": 2,
+      "Fraud Label": 1
+    },
+    {
+      "Transaction Amount": 900.75,
+      "Location": "Atlanta",
+      "Time": "22-11-2024 16:40",
+      "Merchant Category": "Dining",
+      "Device/IP": "Desktop-88.77.66.55",
+      "Logic Patterns": 1,
+      "Velocity": 2,
+      "Card Present": 0,
+      "Declined Transactions": 0,
+      "Fraud Label": 0
+    },
+    {
+      "Transaction Amount": 660.90,
+      "Location": "Dallas",
+      "Time": "11-12-2024 09:25",
+      "Merchant Category": "Transport",
+      "Device/IP": "Mobile-44.55.66.77",
+      "Logic Patterns": 0,
+      "Velocity": 1,
+      "Card Present": 1,
+      "Declined Transactions": 0,
+      "Fraud Label": 0
+    },
+    {
+      "Transaction Amount": 2000.00,
+      "Location": "Seattle",
+      "Time": "17-01-2025 10:00",
+      "Merchant Category": "Online Services",
+      "Device/IP": "Tablet-33.44.55.66",
+      "Logic Patterns": 1,
+      "Velocity": 6,
+      "Card Present": 0,
+      "Declined Transactions": 3,
+      "Fraud Label": 1
+    },
+    {
+      "Transaction Amount": 478.50,
+      "Location": "San Diego",
+      "Time": "19-02-2025 11:30",
+      "Merchant Category": "Grocery",
+      "Device/IP": "Mobile-22.33.44.55",
+      "Logic Patterns": 0,
+      "Velocity": 2,
+      "Card Present": 1,
+      "Declined Transactions": 0,
+      "Fraud Label": 0
+    },
+    {
+      "Transaction Amount": 330.00,
+      "Location": "Orlando",
+      "Time": "24-03-2025 15:15",
+      "Merchant Category": "Dining",
+      "Device/IP": "Desktop-11.22.33.44",
+      "Logic Patterns": 1,
+      "Velocity": 5,
+      "Card Present": 1,
+      "Declined Transactions": 1,
+      "Fraud Label": 1
+    },
+    {
+      "Transaction Amount": 1425.60,
+      "Location": "Portland",
+      "Time": "03-04-2025 17:05",
+      "Merchant Category": "Electronics",
+      "Device/IP": "Tablet-66.77.88.99",
+      "Logic Patterns": 0,
+      "Velocity": 2,
+      "Card Present": 1,
+      "Declined Transactions": 0,
+      "Fraud Label": 0
+    },
+    {
+      "Transaction Amount": 885.45,
+      "Location": "Philadelphia",
+      "Time": "15-05-2025 09:00",
+      "Merchant Category": "Online Services",
+      "Device/IP": "Mobile-55.66.77.88",
+      "Logic Patterns": 1,
+      "Velocity": 3,
+      "Card Present": 0,
+      "Declined Transactions": 2,
+      "Fraud Label": 1
+    },
+    {
+      "Transaction Amount": 1320.88,
+      "Location": "Charlotte",
+      "Time": "06-06-2025 18:20",
+      "Merchant Category": "Transport",
+      "Device/IP": "Desktop-99.00.11.22",
+      "Logic Patterns": 0,
+      "Velocity": 4,
+      "Card Present": 1,
+      "Declined Transactions": 0,
+      "Fraud Label": 0
+    },
+    {
+      "Transaction Amount": 590.00,
+      "Location": "Las Vegas",
+      "Time": "27-06-2025 20:30",
+      "Merchant Category": "Dining",
+      "Device/IP": "Tablet-88.99.11.22",
+      "Logic Patterns": 0,
+      "Velocity": 3,
+      "Card Present": 1,
+      "Declined Transactions": 0,
+      "Fraud Label": 0
+    },
+    {
+      "Transaction Amount": 1550.25,
+      "Location": "Nashville",
+      "Time": "10-07-2025 07:15",
+      "Merchant Category": "Travel",
+      "Device/IP": "Mobile-77.88.99.00",
+      "Logic Patterns": 1,
+      "Velocity": 5,
+      "Card Present": 0,
+      "Declined Transactions": 3,
+      "Fraud Label": 1
+    },
+    {
+      "Transaction Amount": 950.40,
+      "Location": "San Jose",
+      "Time": "25-08-2025 12:00",
+      "Merchant Category": "Fashion",
+      "Device/IP": "Desktop-66.77.88.99",
+      "Logic Patterns": 0,
+      "Velocity": 2,
+      "Card Present": 1,
+      "Declined Transactions": 0,
+      "Fraud Label": 0
+    },
+    {
+      "Transaction Amount": 1230.75,
+      "Location": "Detroit",
+      "Time": "11-09-2025 19:45",
+      "Merchant Category": "Electronics",
+      "Device/IP": "Tablet-33.22.11.00",
+      "Logic Patterns": 1,
+      "Velocity": 4,
+      "Card Present": 1,
+      "Declined Transactions": 1,
+      "Fraud Label": 1
+    },
+    {
+      "Transaction Amount": 1141.21,
+      "Location": "Houston",
+      "Time": "03-05-2024 16:01",
+      "Merchant Category": "Online Services",
+      "Device/IP": "Desktop-225.66.25.56",
+      "Logic Patterns": 0,
+      "Velocity": 4,
+      "Card Present": 0,
+      "Declined Transactions": 1,
+      "Fraud Label": 0
+    },
+    {
+      "Transaction Amount": 4889.75,
+      "Location": "Los Angeles",
+      "Time": "22-03-2024 16:01",
+      "Merchant Category": "Dining",
+      "Device/IP": "Tablet-203.101.107.34",
+      "Logic Patterns": 0,
+      "Velocity": 3,
+      "Card Present": 0,
+      "Declined Transactions": 1,
+      "Fraud Label": 0
+    },
+    {
+      "Transaction Amount": 1678.67,
+      "Location": "Seattle",
+      "Time": "16-10-2024 16:01",
+      "Merchant Category": "Grocery",
+      "Device/IP": "Desktop-118.254.137.173",
+      "Logic Patterns": 0,
+      "Velocity": 1,
+      "Card Present": 1,
+      "Declined Transactions": 0,
+      "Fraud Label": 1
+    },
+    {
+      "Transaction Amount": 687.64,
+      "Location": "Seattle",
+      "Time": "10-02-2025 16:01",
+      "Merchant Category": "Online Services",
+      "Device/IP": "Tablet-96.138.141.30",
+      "Logic Patterns": 0,
+      "Velocity": 7,
+      "Card Present": 0,
+      "Declined Transactions": 4,
+      "Fraud Label": 1
+    },
+    {
+      "Transaction Amount": 4589.03,
+      "Location": "San Francisco",
+      "Time": "08-12-2024 16:01",
+      "Merchant Category": "Travel",
+      "Device/IP": "Desktop-47.218.211.211",
+      "Logic Patterns": 0,
+      "Velocity": 7,
+      "Card Present": 1,
+      "Declined Transactions": 2,
+      "Fraud Label": 0
+    },
+    {
+      "Transaction Amount": 719.96,
+      "Location": "New York",
+      "Time": "03-07-2024 16:01",
+      "Merchant Category": "Grocery",
+      "Device/IP": "Tablet-63.174.150.82",
+      "Logic Patterns": 0,
+      "Velocity": 9,
+      "Card Present": 1,
+      "Declined Transactions": 3,
+      "Fraud Label": 1
+    },
+    {
+      "Transaction Amount": 3383.79,
+      "Location": "New York",
+      "Time": "22-12-2024 16:01",
+      "Merchant Category": "Grocery",
+      "Device/IP": "Tablet-54.135.213.242",
+      "Logic Patterns": 0,
+      "Velocity": 2,
+      "Card Present": 1,
+      "Declined Transactions": 4,
+      "Fraud Label": 0
+    },
+    {
+      "Transaction Amount": 1234.50,
+      "Location": "Chicago",
+      "Time": "01-09-2024 10:45",
+      "Merchant Category": "Electronics",
+      "Device/IP": "Mobile-23.56.78.90",
+      "Logic Patterns": 1,
+      "Velocity": 4,
+      "Card Present": 1,
+      "Declined Transactions": 0,
+      "Fraud Label": 0
+    },
+    {
+      "Transaction Amount": 945.00,
+      "Location": "Houston",
+      "Time": "05-10-2024 15:30",
+      "Merchant Category": "Fashion",
+      "Device/IP": "Desktop-12.34.56.78",
+      "Logic Patterns": 0,
+      "Velocity": 6,
+      "Card Present": 0,
+      "Declined Transactions": 2,
+      "Fraud Label": 1
+    },
+    {
+      "Transaction Amount": 234.89,
+      "Location": "Denver",
+      "Time": "14-11-2024 08:20",
+      "Merchant Category": "Dining",
+      "Device/IP": "Tablet-98.76.54.32",
+      "Logic Patterns": 0,
+      "Velocity": 2,
+      "Card Present": 1,
+      "Declined Transactions": 0,
+      "Fraud Label": 0
+    },
+    {
+      "Transaction Amount": 1100.00,
+      "Location": "Boston",
+      "Time": "28-12-2024 17:00",
+      "Merchant Category": "Grocery",
+      "Device/IP": "Mobile-11.22.33.44",
+      "Logic Patterns": 0,
+      "Velocity": 3,
+      "Card Present": 1,
+      "Declined Transactions": 1,
+      "Fraud Label": 1
+    },
+    {
+      "Transaction Amount": 760.00,
+      "Location": "Los Angeles",
+      "Time": "18-01-2025 14:10",
+      "Merchant Category": "Transport",
+      "Device/IP": "Desktop-55.66.77.88",
+      "Logic Patterns": 1,
+      "Velocity": 5,
+      "Card Present": 0,
+      "Declined Transactions": 2,
+      "Fraud Label": 1
+    },
+    {
+      "Transaction Amount": 389.55,
+      "Location": "Miami",
+      "Time": "10-08-2024 12:30",
+      "Merchant Category": "Groceries",
+      "Device/IP": "Mobile-19.29.39.49",
+      "Logic Patterns": 0,
+      "Velocity": 1,
+      "Card Present": 1,
+      "Declined Transactions": 0,
+      "Fraud Label": 0
+    },
+    {
+      "Transaction Amount": 2123.00,
+      "Location": "Austin",
+      "Time": "12-09-2024 11:15",
+      "Merchant Category": "Electronics",
+      "Device/IP": "Desktop-99.88.77.66",
+      "Logic Patterns": 1,
+      "Velocity": 4,
+      "Card Present": 1,
+      "Declined Transactions": 1,
+      "Fraud Label": 0
+    },
+    {
+      "Transaction Amount": 1456.67,
+      "Location": "Phoenix",
+      "Time": "30-10-2024 13:50",
+      "Merchant Category": "Fashion",
+      "Device/IP": "Tablet-67.89.12.34",
+      "Logic Patterns": 0,
+      "Velocity": 3,
+      "Card Present": 1,
+      "Declined Transactions": 2,
+      "Fraud Label": 1
+    },
+    {
+      "Transaction Amount": 900.75,
+      "Location": "Atlanta",
+      "Time": "22-11-2024 16:40",
+      "Merchant Category": "Dining",
+      "Device/IP": "Desktop-88.77.66.55",
+      "Logic Patterns": 1,
+      "Velocity": 2,
+      "Card Present": 0,
+      "Declined Transactions": 0,
+      "Fraud Label": 0
+    },
+    {
+      "Transaction Amount": 660.90,
+      "Location": "Dallas",
+      "Time": "11-12-2024 09:25",
+      "Merchant Category": "Transport",
+      "Device/IP": "Mobile-44.55.66.77",
+      "Logic Patterns": 0,
+      "Velocity": 1,
+      "Card Present": 1,
+      "Declined Transactions": 0,
+      "Fraud Label": 0
+    },
+    {
+      "Transaction Amount": 2000.00,
+      "Location": "Seattle",
+      "Time": "17-01-2025 10:00",
+      "Merchant Category": "Online Services",
+      "Device/IP": "Tablet-33.44.55.66",
+      "Logic Patterns": 1,
+      "Velocity": 6,
+      "Card Present": 0,
+      "Declined Transactions": 3,
+      "Fraud Label": 1
+    },
+    {
+      "Transaction Amount": 478.50,
+      "Location": "San Diego",
+      "Time": "19-02-2025 11:30",
+      "Merchant Category": "Grocery",
+      "Device/IP": "Mobile-22.33.44.55",
+      "Logic Patterns": 0,
+      "Velocity": 2,
+      "Card Present": 1,
+      "Declined Transactions": 0,
+      "Fraud Label": 0
+    },
+    {
+      "Transaction Amount": 330.00,
+      "Location": "Orlando",
+      "Time": "24-03-2025 15:15",
+      "Merchant Category": "Dining",
+      "Device/IP": "Desktop-11.22.33.44",
+      "Logic Patterns": 1,
+      "Velocity": 5,
+      "Card Present": 1,
+      "Declined Transactions": 1,
+      "Fraud Label": 1
+    },
+    {
+      "Transaction Amount": 1425.60,
+      "Location": "Portland",
+      "Time": "03-04-2025 17:05",
+      "Merchant Category": "Electronics",
+      "Device/IP": "Tablet-66.77.88.99",
+      "Logic Patterns": 0,
+      "Velocity": 2,
+      "Card Present": 1,
+      "Declined Transactions": 0,
+      "Fraud Label": 0
+    },
+    {
+      "Transaction Amount": 885.45,
+      "Location": "Philadelphia",
+      "Time": "15-05-2025 09:00",
+      "Merchant Category": "Online Services",
+      "Device/IP": "Mobile-55.66.77.88",
+      "Logic Patterns": 1,
+      "Velocity": 3,
+      "Card Present": 0,
+      "Declined Transactions": 2,
+      "Fraud Label": 1
+    },
+    {
+      "Transaction Amount": 1320.88,
+      "Location": "Charlotte",
+      "Time": "06-06-2025 18:20",
+      "Merchant Category": "Transport",
+      "Device/IP": "Desktop-99.00.11.22",
+      "Logic Patterns": 0,
+      "Velocity": 4,
+      "Card Present": 1,
+      "Declined Transactions": 0,
+      "Fraud Label": 0
+    },
+    {
+      "Transaction Amount": 590.00,
+      "Location": "Las Vegas",
+      "Time": "27-06-2025 20:30",
+      "Merchant Category": "Dining",
+      "Device/IP": "Tablet-88.99.11.22",
+      "Logic Patterns": 0,
+      "Velocity": 3,
+      "Card Present": 1,
+      "Declined Transactions": 0,
+      "Fraud Label": 0
+    },
+    {
+      "Transaction Amount": 1550.25,
+      "Location": "Nashville",
+      "Time": "10-07-2025 07:15",
+      "Merchant Category": "Travel",
+      "Device/IP": "Mobile-77.88.99.00",
+      "Logic Patterns": 1,
+      "Velocity": 5,
+      "Card Present": 0,
+      "Declined Transactions": 3,
+      "Fraud Label": 1
+    },
+    {
+      "Transaction Amount": 950.40,
+      "Location": "San Jose",
+      "Time": "25-08-2025 12:00",
+      "Merchant Category": "Fashion",
+      "Device/IP": "Desktop-66.77.88.99",
+      "Logic Patterns": 0,
+      "Velocity": 2,
+      "Card Present": 1,
+      "Declined Transactions": 0,
+      "Fraud Label": 0
+    },
+    {
+      "Transaction Amount": 1230.75,
+      "Location": "Detroit",
+      "Time": "11-09-2025 19:45",
+      "Merchant Category": "Electronics",
+      "Device/IP": "Tablet-33.22.11.00",
+      "Logic Patterns": 1,
+      "Velocity": 4,
+      "Card Present": 1,
+      "Declined Transactions": 1,
+      "Fraud Label": 1
+    },
+    {
+      "Transaction Amount": 1141.21,
+      "Location": "Houston",
+      "Time": "03-05-2024 16:01",
+      "Merchant Category": "Online Services",
+      "Device/IP": "Desktop-225.66.25.56",
+      "Logic Patterns": 0,
+      "Velocity": 4,
+      "Card Present": 0,
+      "Declined Transactions": 1,
+      "Fraud Label": 0
+    },
+    {
+      "Transaction Amount": 4889.75,
+      "Location": "Los Angeles",
+      "Time": "22-03-2024 16:01",
+      "Merchant Category": "Dining",
+      "Device/IP": "Tablet-203.101.107.34",
+      "Logic Patterns": 0,
+      "Velocity": 3,
+      "Card Present": 0,
+      "Declined Transactions": 1,
+      "Fraud Label": 0
+    },
+    {
+      "Transaction Amount": 1678.67,
+      "Location": "Seattle",
+      "Time": "16-10-2024 16:01",
+      "Merchant Category": "Grocery",
+      "Device/IP": "Desktop-118.254.137.173",
+      "Logic Patterns": 0,
+      "Velocity": 1,
+      "Card Present": 1,
+      "Declined Transactions": 0,
+      "Fraud Label": 1
+    },
+    {
+      "Transaction Amount": 687.64,
+      "Location": "Seattle",
+      "Time": "10-02-2025 16:01",
+      "Merchant Category": "Online Services",
+      "Device/IP": "Tablet-96.138.141.30",
+      "Logic Patterns": 0,
+      "Velocity": 7,
+      "Card Present": 0,
+      "Declined Transactions": 4,
+      "Fraud Label": 1
+    },
+    {
+      "Transaction Amount": 4589.03,
+      "Location": "San Francisco",
+      "Time": "08-12-2024 16:01",
+      "Merchant Category": "Travel",
+      "Device/IP": "Desktop-47.218.211.211",
+      "Logic Patterns": 0,
+      "Velocity": 7,
+      "Card Present": 1,
+      "Declined Transactions": 2,
+      "Fraud Label": 0
+    },
+    {
+      "Transaction Amount": 719.96,
+      "Location": "New York",
+      "Time": "03-07-2024 16:01",
+      "Merchant Category": "Grocery",
+      "Device/IP": "Tablet-63.174.150.82",
+      "Logic Patterns": 0,
+      "Velocity": 9,
+      "Card Present": 1,
+      "Declined Transactions": 3,
+      "Fraud Label": 1
+    },
+    {
+      "Transaction Amount": 3383.79,
+      "Location": "New York",
+      "Time": "22-12-2024 16:01",
+      "Merchant Category": "Grocery",
+      "Device/IP": "Tablet-54.135.213.242",
+      "Logic Patterns": 0,
+      "Velocity": 2,
+      "Card Present": 1,
+      "Declined Transactions": 4,
+      "Fraud Label": 0
+    },
+    {
+      "Transaction Amount": 1234.50,
+      "Location": "Chicago",
+      "Time": "01-09-2024 10:45",
+      "Merchant Category": "Electronics",
+      "Device/IP": "Mobile-23.56.78.90",
+      "Logic Patterns": 1,
+      "Velocity": 4,
+      "Card Present": 1,
+      "Declined Transactions": 0,
+      "Fraud Label": 0
+    },
+    {
+      "Transaction Amount": 945.00,
+      "Location": "Houston",
+      "Time": "05-10-2024 15:30",
+      "Merchant Category": "Fashion",
+      "Device/IP": "Desktop-12.34.56.78",
+      "Logic Patterns": 0,
+      "Velocity": 6,
+      "Card Present": 0,
+      "Declined Transactions": 2,
+      "Fraud Label": 1
+    },
+    {
+      "Transaction Amount": 234.89,
+      "Location": "Denver",
+      "Time": "14-11-2024 08:20",
+      "Merchant Category": "Dining",
+      "Device/IP": "Tablet-98.76.54.32",
+      "Logic Patterns": 0,
+      "Velocity": 2,
+      "Card Present": 1,
+      "Declined Transactions": 0,
+      "Fraud Label": 0
+    },
+    {
+      "Transaction Amount": 1100.00,
+      "Location": "Boston",
+      "Time": "28-12-2024 17:00",
+      "Merchant Category": "Grocery",
+      "Device/IP": "Mobile-11.22.33.44",
+      "Logic Patterns": 0,
+      "Velocity": 3,
+      "Card Present": 1,
+      "Declined Transactions": 1,
+      "Fraud Label": 1
+    },
+    {
+      "Transaction Amount": 760.00,
+      "Location": "Los Angeles",
+      "Time": "18-01-2025 14:10",
+      "Merchant Category": "Transport",
+      "Device/IP": "Desktop-55.66.77.88",
+      "Logic Patterns": 1,
+      "Velocity": 5,
+      "Card Present": 0,
+      "Declined Transactions": 2,
+      "Fraud Label": 1
+    },
+    {
+      "Transaction Amount": 389.55,
+      "Location": "Miami",
+      "Time": "10-08-2024 12:30",
+      "Merchant Category": "Groceries",
+      "Device/IP": "Mobile-19.29.39.49",
+      "Logic Patterns": 0,
+      "Velocity": 1,
+      "Card Present": 1,
+      "Declined Transactions": 0,
+      "Fraud Label": 0
+    },
+    {
+      "Transaction Amount": 2123.00,
+      "Location": "Austin",
+      "Time": "12-09-2024 11:15",
+      "Merchant Category": "Electronics",
+      "Device/IP": "Desktop-99.88.77.66",
+      "Logic Patterns": 1,
+      "Velocity": 4,
+      "Card Present": 1,
+      "Declined Transactions": 1,
+      "Fraud Label": 0
+    },
+    {
+      "Transaction Amount": 1456.67,
+      "Location": "Phoenix",
+      "Time": "30-10-2024 13:50",
+      "Merchant Category": "Fashion",
+      "Device/IP": "Tablet-67.89.12.34",
+      "Logic Patterns": 0,
+      "Velocity": 3,
+      "Card Present": 1,
+      "Declined Transactions": 2,
+      "Fraud Label": 1
+    },
+    {
+      "Transaction Amount": 900.75,
+      "Location": "Atlanta",
+      "Time": "22-11-2024 16:40",
+      "Merchant Category": "Dining",
+      "Device/IP": "Desktop-88.77.66.55",
+      "Logic Patterns": 1,
+      "Velocity": 2,
+      "Card Present": 0,
+      "Declined Transactions": 0,
+      "Fraud Label": 0
+    },
+    {
+      "Transaction Amount": 660.90,
+      "Location": "Dallas",
+      "Time": "11-12-2024 09:25",
+      "Merchant Category": "Transport",
+      "Device/IP": "Mobile-44.55.66.77",
+      "Logic Patterns": 0,
+      "Velocity": 1,
+      "Card Present": 1,
+      "Declined Transactions": 0,
+      "Fraud Label": 0
+    },
+    {
+      "Transaction Amount": 2000.00,
+      "Location": "Seattle",
+      "Time": "17-01-2025 10:00",
+      "Merchant Category": "Online Services",
+      "Device/IP": "Tablet-33.44.55.66",
+      "Logic Patterns": 1,
+      "Velocity": 6,
+      "Card Present": 0,
+      "Declined Transactions": 3,
+      "Fraud Label": 1
+    },
+    {
+      "Transaction Amount": 478.50,
+      "Location": "San Diego",
+      "Time": "19-02-2025 11:30",
+      "Merchant Category": "Grocery",
+      "Device/IP": "Mobile-22.33.44.55",
+      "Logic Patterns": 0,
+      "Velocity": 2,
+      "Card Present": 1,
+      "Declined Transactions": 0,
+      "Fraud Label": 0
+    },
+    {
+      "Transaction Amount": 330.00,
+      "Location": "Orlando",
+      "Time": "24-03-2025 15:15",
+      "Merchant Category": "Dining",
+      "Device/IP": "Desktop-11.22.33.44",
+      "Logic Patterns": 1,
+      "Velocity": 5,
+      "Card Present": 1,
+      "Declined Transactions": 1,
+      "Fraud Label": 1
+    },
+    {
+      "Transaction Amount": 1425.60,
+      "Location": "Portland",
+      "Time": "03-04-2025 17:05",
+      "Merchant Category": "Electronics",
+      "Device/IP": "Tablet-66.77.88.99",
+      "Logic Patterns": 0,
+      "Velocity": 2,
+      "Card Present": 1,
+      "Declined Transactions": 0,
+      "Fraud Label": 0
+    },
+    {
+      "Transaction Amount": 885.45,
+      "Location": "Philadelphia",
+      "Time": "15-05-2025 09:00",
+      "Merchant Category": "Online Services",
+      "Device/IP": "Mobile-55.66.77.88",
+      "Logic Patterns": 1,
+      "Velocity": 3,
+      "Card Present": 0,
+      "Declined Transactions": 2,
+      "Fraud Label": 1
+    },
+    {
+      "Transaction Amount": 1320.88,
+      "Location": "Charlotte",
+      "Time": "06-06-2025 18:20",
+      "Merchant Category": "Transport",
+      "Device/IP": "Desktop-99.00.11.22",
+      "Logic Patterns": 0,
+      "Velocity": 4,
+      "Card Present": 1,
+      "Declined Transactions": 0,
+      "Fraud Label": 0
+    },
+    {
+      "Transaction Amount": 590.00,
+      "Location": "Las Vegas",
+      "Time": "27-06-2025 20:30",
+      "Merchant Category": "Dining",
+      "Device/IP": "Tablet-88.99.11.22",
+      "Logic Patterns": 0,
+      "Velocity": 3,
+      "Card Present": 1,
+      "Declined Transactions": 0,
+      "Fraud Label": 0
+    },
+    {
+      "Transaction Amount": 1550.25,
+      "Location": "Nashville",
+      "Time": "10-07-2025 07:15",
+      "Merchant Category": "Travel",
+      "Device/IP": "Mobile-77.88.99.00",
+      "Logic Patterns": 1,
+      "Velocity": 5,
+      "Card Present": 0,
+      "Declined Transactions": 3,
+      "Fraud Label": 1
+    },
+    {
+      "Transaction Amount": 950.40,
+      "Location": "San Jose",
+      "Time": "25-08-2025 12:00",
+      "Merchant Category": "Fashion",
+      "Device/IP": "Desktop-66.77.88.99",
+      "Logic Patterns": 0,
+      "Velocity": 2,
+      "Card Present": 1,
+      "Declined Transactions": 0,
+      "Fraud Label": 0
+    },
+    {
+      "Transaction Amount": 1230.75,
+      "Location": "Detroit",
+      "Time": "11-09-2025 19:45",
+      "Merchant Category": "Electronics",
+      "Device/IP": "Tablet-33.22.11.00",
+      "Logic Patterns": 1,
+      "Velocity": 4,
+      "Card Present": 1,
+      "Declined Transactions": 1,
+      "Fraud Label": 1
+    },
+    {
+      "Transaction Amount": 1141.21,
+      "Location": "Houston",
+      "Time": "03-05-2024 16:01",
+      "Merchant Category": "Online Services",
+      "Device/IP": "Desktop-225.66.25.56",
+      "Logic Patterns": 0,
+      "Velocity": 4,
+      "Card Present": 0,
+      "Declined Transactions": 1,
+      "Fraud Label": 0
+    },
+    {
+      "Transaction Amount": 4889.75,
+      "Location": "Los Angeles",
+      "Time": "22-03-2024 16:01",
+      "Merchant Category": "Dining",
+      "Device/IP": "Tablet-203.101.107.34",
+      "Logic Patterns": 0,
+      "Velocity": 3,
+      "Card Present": 0,
+      "Declined Transactions": 1,
+      "Fraud Label": 0
+    },
+    {
+      "Transaction Amount": 1678.67,
+      "Location": "Seattle",
+      "Time": "16-10-2024 16:01",
+      "Merchant Category": "Grocery",
+      "Device/IP": "Desktop-118.254.137.173",
+      "Logic Patterns": 0,
+      "Velocity": 1,
+      "Card Present": 1,
+      "Declined Transactions": 0,
+      "Fraud Label": 1
+    },
+    {
+      "Transaction Amount": 687.64,
+      "Location": "Seattle",
+      "Time": "10-02-2025 16:01",
+      "Merchant Category": "Online Services",
+      "Device/IP": "Tablet-96.138.141.30",
+      "Logic Patterns": 0,
+      "Velocity": 7,
+      "Card Present": 0,
+      "Declined Transactions": 4,
+      "Fraud Label": 1
+    },
+    {
+      "Transaction Amount": 4589.03,
+      "Location": "San Francisco",
+      "Time": "08-12-2024 16:01",
+      "Merchant Category": "Travel",
+      "Device/IP": "Desktop-47.218.211.211",
+      "Logic Patterns": 0,
+      "Velocity": 7,
+      "Card Present": 1,
+      "Declined Transactions": 2,
+      "Fraud Label": 0
+    },
+    {
+      "Transaction Amount": 719.96,
+      "Location": "New York",
+      "Time": "03-07-2024 16:01",
+      "Merchant Category": "Grocery",
+      "Device/IP": "Tablet-63.174.150.82",
+      "Logic Patterns": 0,
+      "Velocity": 9,
+      "Card Present": 1,
+      "Declined Transactions": 3,
+      "Fraud Label": 1
+    },
+    {
+      "Transaction Amount": 3383.79,
+      "Location": "New York",
+      "Time": "22-12-2024 16:01",
+      "Merchant Category": "Grocery",
+      "Device/IP": "Tablet-54.135.213.242",
+      "Logic Patterns": 0,
+      "Velocity": 2,
+      "Card Present": 1,
+      "Declined Transactions": 4,
+      "Fraud Label": 0
+    },
+    {
+      "Transaction Amount": 1234.50,
+      "Location": "Chicago",
+      "Time": "01-09-2024 10:45",
+      "Merchant Category": "Electronics",
+      "Device/IP": "Mobile-23.56.78.90",
+      "Logic Patterns": 1,
+      "Velocity": 4,
+      "Card Present": 1,
+      "Declined Transactions": 0,
+      "Fraud Label": 0
+    },
+    {
+      "Transaction Amount": 945.00,
+      "Location": "Houston",
+      "Time": "05-10-2024 15:30",
+      "Merchant Category": "Fashion",
+      "Device/IP": "Desktop-12.34.56.78",
+      "Logic Patterns": 0,
+      "Velocity": 6,
+      "Card Present": 0,
+      "Declined Transactions": 2,
+      "Fraud Label": 1
+    },
+    {
+      "Transaction Amount": 234.89,
+      "Location": "Denver",
+      "Time": "14-11-2024 08:20",
+      "Merchant Category": "Dining",
+      "Device/IP": "Tablet-98.76.54.32",
+      "Logic Patterns": 0,
+      "Velocity": 2,
+      "Card Present": 1,
+      "Declined Transactions": 0,
+      "Fraud Label": 0
+    },
+    {
+      "Transaction Amount": 1100.00,
+      "Location": "Boston",
+      "Time": "28-12-2024 17:00",
+      "Merchant Category": "Grocery",
+      "Device/IP": "Mobile-11.22.33.44",
+      "Logic Patterns": 0,
+      "Velocity": 3,
+      "Card Present": 1,
+      "Declined Transactions": 1,
+      "Fraud Label": 1
+    },
+    {
+      "Transaction Amount": 760.00,
+      "Location": "Los Angeles",
+      "Time": "18-01-2025 14:10",
+      "Merchant Category": "Transport",
+      "Device/IP": "Desktop-55.66.77.88",
+      "Logic Patterns": 1,
+      "Velocity": 5,
+      "Card Present": 0,
+      "Declined Transactions": 2,
+      "Fraud Label": 1
+    },
+    {
+      "Transaction Amount": 389.55,
+      "Location": "Miami",
+      "Time": "10-08-2024 12:30",
+      "Merchant Category": "Groceries",
+      "Device/IP": "Mobile-19.29.39.49",
+      "Logic Patterns": 0,
+      "Velocity": 1,
+      "Card Present": 1,
+      "Declined Transactions": 0,
+      "Fraud Label": 0
+    },
+    {
+      "Transaction Amount": 2123.00,
+      "Location": "Austin",
+      "Time": "12-09-2024 11:15",
+      "Merchant Category": "Electronics",
+      "Device/IP": "Desktop-99.88.77.66",
+      "Logic Patterns": 1,
+      "Velocity": 4,
+      "Card Present": 1,
+      "Declined Transactions": 1,
+      "Fraud Label": 0
+    },
+    {
+      "Transaction Amount": 1456.67,
+      "Location": "Phoenix",
+      "Time": "30-10-2024 13:50",
+      "Merchant Category": "Fashion",
+      "Device/IP": "Tablet-67.89.12.34",
+      "Logic Patterns": 0,
+      "Velocity": 3,
+      "Card Present": 1,
+      "Declined Transactions": 2,
+      "Fraud Label": 1
+    },
+    {
+      "Transaction Amount": 900.75,
+      "Location": "Atlanta",
+      "Time": "22-11-2024 16:40",
+      "Merchant Category": "Dining",
+      "Device/IP": "Desktop-88.77.66.55",
+      "Logic Patterns": 1,
+      "Velocity": 2,
+      "Card Present": 0,
+      "Declined Transactions": 0,
+      "Fraud Label": 0
+    },
+    {
+      "Transaction Amount": 660.90,
+      "Location": "Dallas",
+      "Time": "11-12-2024 09:25",
+      "Merchant Category": "Transport",
+      "Device/IP": "Mobile-44.55.66.77",
+      "Logic Patterns": 0,
+      "Velocity": 1,
+      "Card Present": 1,
+      "Declined Transactions": 0,
+      "Fraud Label": 0
+    },
+    {
+      "Transaction Amount": 2000.00,
+      "Location": "Seattle",
+      "Time": "17-01-2025 10:00",
+      "Merchant Category": "Online Services",
+      "Device/IP": "Tablet-33.44.55.66",
+      "Logic Patterns": 1,
+      "Velocity": 6,
+      "Card Present": 0,
+      "Declined Transactions": 3,
+      "Fraud Label": 1
+    },
+    {
+      "Transaction Amount": 478.50,
+      "Location": "San Diego",
+      "Time": "19-02-2025 11:30",
+      "Merchant Category": "Grocery",
+      "Device/IP": "Mobile-22.33.44.55",
+      "Logic Patterns": 0,
+      "Velocity": 2,
+      "Card Present": 1,
+      "Declined Transactions": 0,
+      "Fraud Label": 0
+    },
+    {
+      "Transaction Amount": 330.00,
+      "Location": "Orlando",
+      "Time": "24-03-2025 15:15",
+      "Merchant Category": "Dining",
+      "Device/IP": "Desktop-11.22.33.44",
+      "Logic Patterns": 1,
+      "Velocity": 5,
+      "Card Present": 1,
+      "Declined Transactions": 1,
+      "Fraud Label": 1
+    },
+    {
+      "Transaction Amount": 1425.60,
+      "Location": "Portland",
+      "Time": "03-04-2025 17:05",
+      "Merchant Category": "Electronics",
+      "Device/IP": "Tablet-66.77.88.99",
+      "Logic Patterns": 0,
+      "Velocity": 2,
+      "Card Present": 1,
+      "Declined Transactions": 0,
+      "Fraud Label": 0
+    },
+    {
+      "Transaction Amount": 885.45,
+      "Location": "Philadelphia",
+      "Time": "15-05-2025 09:00",
+      "Merchant Category": "Online Services",
+      "Device/IP": "Mobile-55.66.77.88",
+      "Logic Patterns": 1,
+      "Velocity": 3,
+      "Card Present": 0,
+      "Declined Transactions": 2,
+      "Fraud Label": 1
+    },
+    {
+      "Transaction Amount": 1320.88,
+      "Location": "Charlotte",
+      "Time": "06-06-2025 18:20",
+      "Merchant Category": "Transport",
+      "Device/IP": "Desktop-99.00.11.22",
+      "Logic Patterns": 0,
+      "Velocity": 4,
+      "Card Present": 1,
+      "Declined Transactions": 0,
+      "Fraud Label": 0
+    },
+    {
+      "Transaction Amount": 590.00,
+      "Location": "Las Vegas",
+      "Time": "27-06-2025 20:30",
+      "Merchant Category": "Dining",
+      "Device/IP": "Tablet-88.99.11.22",
+      "Logic Patterns": 0,
+      "Velocity": 3,
+      "Card Present": 1,
+      "Declined Transactions": 0,
+      "Fraud Label": 0
+    },
+    {
+      "Transaction Amount": 1550.25,
+      "Location": "Nashville",
+      "Time": "10-07-2025 07:15",
+      "Merchant Category": "Travel",
+      "Device/IP": "Mobile-77.88.99.00",
+      "Logic Patterns": 1,
+      "Velocity": 5,
+      "Card Present": 0,
+      "Declined Transactions": 3,
+      "Fraud Label": 1
+    },
+    {
+      "Transaction Amount": 950.40,
+      "Location": "San Jose",
+      "Time": "25-08-2025 12:00",
+      "Merchant Category": "Fashion",
+      "Device/IP": "Desktop-66.77.88.99",
+      "Logic Patterns": 0,
+      "Velocity": 2,
+      "Card Present": 1,
+      "Declined Transactions": 0,
+      "Fraud Label": 0
+    },
+    {
+      "Transaction Amount": 1230.75,
+      "Location": "Detroit",
+      "Time": "11-09-2025 19:45",
+      "Merchant Category": "Electronics",
+      "Device/IP": "Tablet-33.22.11.00",
+      "Logic Patterns": 1,
+      "Velocity": 4,
+      "Card Present": 1,
+      "Declined Transactions": 1,
+      "Fraud Label": 1
+    },
+    {
+      "Transaction Amount": 1141.21,
+      "Location": "Houston",
+      "Time": "03-05-2024 16:01",
+      "Merchant Category": "Online Services",
+      "Device/IP": "Desktop-225.66.25.56",
+      "Logic Patterns": 0,
+      "Velocity": 4,
+      "Card Present": 0,
+      "Declined Transactions": 1,
+      "Fraud Label": 0
+    },
+    {
+      "Transaction Amount": 4889.75,
+      "Location": "Los Angeles",
+      "Time": "22-03-2024 16:01",
+      "Merchant Category": "Dining",
+      "Device/IP": "Tablet-203.101.107.34",
+      "Logic Patterns": 0,
+      "Velocity": 3,
+      "Card Present": 0,
+      "Declined Transactions": 1,
+      "Fraud Label": 0
+    },
+    {
+      "Transaction Amount": 1678.67,
+      "Location": "Seattle",
+      "Time": "16-10-2024 16:01",
+      "Merchant Category": "Grocery",
+      "Device/IP": "Desktop-118.254.137.173",
+      "Logic Patterns": 0,
+      "Velocity": 1,
+      "Card Present": 1,
+      "Declined Transactions": 0,
+      "Fraud Label": 1
+    },
+    {
+      "Transaction Amount": 687.64,
+      "Location": "Seattle",
+      "Time": "10-02-2025 16:01",
+      "Merchant Category": "Online Services",
+      "Device/IP": "Tablet-96.138.141.30",
+      "Logic Patterns": 0,
+      "Velocity": 7,
+      "Card Present": 0,
+      "Declined Transactions": 4,
+      "Fraud Label": 1
+    },
+    {
+      "Transaction Amount": 4589.03,
+      "Location": "San Francisco",
+      "Time": "08-12-2024 16:01",
+      "Merchant Category": "Travel",
+      "Device/IP": "Desktop-47.218.211.211",
+      "Logic Patterns": 0,
+      "Velocity": 7,
+      "Card Present": 1,
+      "Declined Transactions": 2,
+      "Fraud Label": 0
+    },
+    {
+      "Transaction Amount": 719.96,
+      "Location": "New York",
+      "Time": "03-07-2024 16:01",
+      "Merchant Category": "Grocery",
+      "Device/IP": "Tablet-63.174.150.82",
+      "Logic Patterns": 0,
+      "Velocity": 9,
+      "Card Present": 1,
+      "Declined Transactions": 3,
+      "Fraud Label": 1
+    },
+    {
+      "Transaction Amount": 3383.79,
+      "Location": "New York",
+      "Time": "22-12-2024 16:01",
+      "Merchant Category": "Grocery",
+      "Device/IP": "Tablet-54.135.213.242",
+      "Logic Patterns": 0,
+      "Velocity": 2,
+      "Card Present": 1,
+      "Declined Transactions": 4,
+      "Fraud Label": 0
+    },
+    {
+      "Transaction Amount": 1234.50,
+      "Location": "Chicago",
+      "Time": "01-09-2024 10:45",
+      "Merchant Category": "Electronics",
+      "Device/IP": "Mobile-23.56.78.90",
+      "Logic Patterns": 1,
+      "Velocity": 4,
+      "Card Present": 1,
+      "Declined Transactions": 0,
+      "Fraud Label": 0
+    },
+    {
+      "Transaction Amount": 945.00,
+      "Location": "Houston",
+      "Time": "05-10-2024 15:30",
+      "Merchant Category": "Fashion",
+      "Device/IP": "Desktop-12.34.56.78",
+      "Logic Patterns": 0,
+      "Velocity": 6,
+      "Card Present": 0,
+      "Declined Transactions": 2,
+      "Fraud Label": 1
+    },
+    {
+      "Transaction Amount": 234.89,
+      "Location": "Denver",
+      "Time": "14-11-2024 08:20",
+      "Merchant Category": "Dining",
+      "Device/IP": "Tablet-98.76.54.32",
+      "Logic Patterns": 0,
+      "Velocity": 2,
+      "Card Present": 1,
+      "Declined Transactions": 0,
+      "Fraud Label": 0
+    },
+    {
+      "Transaction Amount": 1100.00,
+      "Location": "Boston",
+      "Time": "28-12-2024 17:00",
+      "Merchant Category": "Grocery",
+      "Device/IP": "Mobile-11.22.33.44",
+      "Logic Patterns": 0,
+      "Velocity": 3,
+      "Card Present": 1,
+      "Declined Transactions": 1,
+      "Fraud Label": 1
+    },
+    {
+      "Transaction Amount": 760.00,
+      "Location": "Los Angeles",
+      "Time": "18-01-2025 14:10",
+      "Merchant Category": "Transport",
+      "Device/IP": "Desktop-55.66.77.88",
+      "Logic Patterns": 1,
+      "Velocity": 5,
+      "Card Present": 0,
+      "Declined Transactions": 2,
+      "Fraud Label": 1
+    },
+    {
+      "Transaction Amount": 389.55,
+      "Location": "Miami",
+      "Time": "10-08-2024 12:30",
+      "Merchant Category": "Groceries",
+      "Device/IP": "Mobile-19.29.39.49",
+      "Logic Patterns": 0,
+      "Velocity": 1,
+      "Card Present": 1,
+      "Declined Transactions": 0,
+      "Fraud Label": 0
+    },
+    {
+      "Transaction Amount": 2123.00,
+      "Location": "Austin",
+      "Time": "12-09-2024 11:15",
+      "Merchant Category": "Electronics",
+      "Device/IP": "Desktop-99.88.77.66",
+      "Logic Patterns": 1,
+      "Velocity": 4,
+      "Card Present": 1,
+      "Declined Transactions": 1,
+      "Fraud Label": 0
+    },
+    {
+      "Transaction Amount": 1456.67,
+      "Location": "Phoenix",
+      "Time": "30-10-2024 13:50",
+      "Merchant Category": "Fashion",
+      "Device/IP": "Tablet-67.89.12.34",
+      "Logic Patterns": 0,
+      "Velocity": 3,
+      "Card Present": 1,
+      "Declined Transactions": 2,
+      "Fraud Label": 1
+    },
+    {
+      "Transaction Amount": 900.75,
+      "Location": "Atlanta",
+      "Time": "22-11-2024 16:40",
+      "Merchant Category": "Dining",
+      "Device/IP": "Desktop-88.77.66.55",
+      "Logic Patterns": 1,
+      "Velocity": 2,
+      "Card Present": 0,
+      "Declined Transactions": 0,
+      "Fraud Label": 0
+    },
+    {
+      "Transaction Amount": 660.90,
+      "Location": "Dallas",
+      "Time": "11-12-2024 09:25",
+      "Merchant Category": "Transport",
+      "Device/IP": "Mobile-44.55.66.77",
+      "Logic Patterns": 0,
+      "Velocity": 1,
+      "Card Present": 1,
+      "Declined Transactions": 0,
+      "Fraud Label": 0
+    },
+    {
+      "Transaction Amount": 2000.00,
+      "Location": "Seattle",
+      "Time": "17-01-2025 10:00",
+      "Merchant Category": "Online Services",
+      "Device/IP": "Tablet-33.44.55.66",
+      "Logic Patterns": 1,
+      "Velocity": 6,
+      "Card Present": 0,
+      "Declined Transactions": 3,
+      "Fraud Label": 1
+    },
+    {
+      "Transaction Amount": 478.50,
+      "Location": "San Diego",
+      "Time": "19-02-2025 11:30",
+      "Merchant Category": "Grocery",
+      "Device/IP": "Mobile-22.33.44.55",
+      "Logic Patterns": 0,
+      "Velocity": 2,
+      "Card Present": 1,
+      "Declined Transactions": 0,
+      "Fraud Label": 0
+    },
+    {
+      "Transaction Amount": 330.00,
+      "Location": "Orlando",
+      "Time": "24-03-2025 15:15",
+      "Merchant Category": "Dining",
+      "Device/IP": "Desktop-11.22.33.44",
+      "Logic Patterns": 1,
+      "Velocity": 5,
+      "Card Present": 1,
+      "Declined Transactions": 1,
+      "Fraud Label": 1
+    },
+    {
+      "Transaction Amount": 1425.60,
+      "Location": "Portland",
+      "Time": "03-04-2025 17:05",
+      "Merchant Category": "Electronics",
+      "Device/IP": "Tablet-66.77.88.99",
+      "Logic Patterns": 0,
+      "Velocity": 2,
+      "Card Present": 1,
+      "Declined Transactions": 0,
+      "Fraud Label": 0
+    },
+    {
+      "Transaction Amount": 885.45,
+      "Location": "Philadelphia",
+      "Time": "15-05-2025 09:00",
+      "Merchant Category": "Online Services",
+      "Device/IP": "Mobile-55.66.77.88",
+      "Logic Patterns": 1,
+      "Velocity": 3,
+      "Card Present": 0,
+      "Declined Transactions": 2,
+      "Fraud Label": 1
+    },
+    {
+      "Transaction Amount": 1320.88,
+      "Location": "Charlotte",
+      "Time": "06-06-2025 18:20",
+      "Merchant Category": "Transport",
+      "Device/IP": "Desktop-99.00.11.22",
+      "Logic Patterns": 0,
+      "Velocity": 4,
+      "Card Present": 1,
+      "Declined Transactions": 0,
+      "Fraud Label": 0
+    },
+    {
+      "Transaction Amount": 590.00,
+      "Location": "Las Vegas",
+      "Time": "27-06-2025 20:30",
+      "Merchant Category": "Dining",
+      "Device/IP": "Tablet-88.99.11.22",
+      "Logic Patterns": 0,
+      "Velocity": 3,
+      "Card Present": 1,
+      "Declined Transactions": 0,
+      "Fraud Label": 0
+    },
+    {
+      "Transaction Amount": 1550.25,
+      "Location": "Nashville",
+      "Time": "10-07-2025 07:15",
+      "Merchant Category": "Travel",
+      "Device/IP": "Mobile-77.88.99.00",
+      "Logic Patterns": 1,
+      "Velocity": 5,
+      "Card Present": 0,
+      "Declined Transactions": 3,
+      "Fraud Label": 1
+    },
+    {
+      "Transaction Amount": 950.40,
+      "Location": "San Jose",
+      "Time": "25-08-2025 12:00",
+      "Merchant Category": "Fashion",
+      "Device/IP": "Desktop-66.77.88.99",
+      "Logic Patterns": 0,
+      "Velocity": 2,
+      "Card Present": 1,
+      "Declined Transactions": 0,
+      "Fraud Label": 0
+    },
+    {
+      "Transaction Amount": 1230.75,
+      "Location": "Detroit",
+      "Time": "11-09-2025 19:45",
+      "Merchant Category": "Electronics",
+      "Device/IP": "Tablet-33.22.11.00",
+      "Logic Patterns": 1,
+      "Velocity": 4,
+      "Card Present": 1,
+      "Declined Transactions": 1,
+      "Fraud Label": 1
+    },
+    {
+      "Transaction Amount": 1141.21,
+      "Location": "Houston",
+      "Time": "03-05-2024 16:01",
+      "Merchant Category": "Online Services",
+      "Device/IP": "Desktop-225.66.25.56",
+      "Logic Patterns": 0,
+      "Velocity": 4,
+      "Card Present": 0,
+      "Declined Transactions": 1,
+      "Fraud Label": 0
+    },
+    {
+      "Transaction Amount": 4889.75,
+      "Location": "Los Angeles",
+      "Time": "22-03-2024 16:01",
+      "Merchant Category": "Dining",
+      "Device/IP": "Tablet-203.101.107.34",
+      "Logic Patterns": 0,
+      "Velocity": 3,
+      "Card Present": 0,
+      "Declined Transactions": 1,
+      "Fraud Label": 0
+    },
+    {
+      "Transaction Amount": 1678.67,
+      "Location": "Seattle",
+      "Time": "16-10-2024 16:01",
+      "Merchant Category": "Grocery",
+      "Device/IP": "Desktop-118.254.137.173",
+      "Logic Patterns": 0,
+      "Velocity": 1,
+      "Card Present": 1,
+      "Declined Transactions": 0,
+      "Fraud Label": 1
+    },
+    {
+      "Transaction Amount": 687.64,
+      "Location": "Seattle",
+      "Time": "10-02-2025 16:01",
+      "Merchant Category": "Online Services",
+      "Device/IP": "Tablet-96.138.141.30",
+      "Logic Patterns": 0,
+      "Velocity": 7,
+      "Card Present": 0,
+      "Declined Transactions": 4,
+      "Fraud Label": 1
+    },
+    {
+      "Transaction Amount": 4589.03,
+      "Location": "San Francisco",
+      "Time": "08-12-2024 16:01",
+      "Merchant Category": "Travel",
+      "Device/IP": "Desktop-47.218.211.211",
+      "Logic Patterns": 0,
+      "Velocity": 7,
+      "Card Present": 1,
+      "Declined Transactions": 2,
+      "Fraud Label": 0
+    },
+    {
+      "Transaction Amount": 719.96,
+      "Location": "New York",
+      "Time": "03-07-2024 16:01",
+      "Merchant Category": "Grocery",
+      "Device/IP": "Tablet-63.174.150.82",
+      "Logic Patterns": 0,
+      "Velocity": 9,
+      "Card Present": 1,
+      "Declined Transactions": 3,
+      "Fraud Label": 1
+    },
+    {
+      "Transaction Amount": 3383.79,
+      "Location": "New York",
+      "Time": "22-12-2024 16:01",
+      "Merchant Category": "Grocery",
+      "Device/IP": "Tablet-54.135.213.242",
+      "Logic Patterns": 0,
+      "Velocity": 2,
+      "Card Present": 1,
+      "Declined Transactions": 4,
+      "Fraud Label": 0
+    },
+    {
+      "Transaction Amount": 1234.50,
+      "Location": "Chicago",
+      "Time": "01-09-2024 10:45",
+      "Merchant Category": "Electronics",
+      "Device/IP": "Mobile-23.56.78.90",
+      "Logic Patterns": 1,
+      "Velocity": 4,
+      "Card Present": 1,
+      "Declined Transactions": 0,
+      "Fraud Label": 0
+    },
+    {
+      "Transaction Amount": 945.00,
+      "Location": "Houston",
+      "Time": "05-10-2024 15:30",
+      "Merchant Category": "Fashion",
+      "Device/IP": "Desktop-12.34.56.78",
+      "Logic Patterns": 0,
+      "Velocity": 6,
+      "Card Present": 0,
+      "Declined Transactions": 2,
+      "Fraud Label": 1
+    },
+    {
+      "Transaction Amount": 234.89,
+      "Location": "Denver",
+      "Time": "14-11-2024 08:20",
+      "Merchant Category": "Dining",
+      "Device/IP": "Tablet-98.76.54.32",
+      "Logic Patterns": 0,
+      "Velocity": 2,
+      "Card Present": 1,
+      "Declined Transactions": 0,
+      "Fraud Label": 0
+    },
+    {
+      "Transaction Amount": 1100.00,
+      "Location": "Boston",
+      "Time": "28-12-2024 17:00",
+      "Merchant Category": "Grocery",
+      "Device/IP": "Mobile-11.22.33.44",
+      "Logic Patterns": 0,
+      "Velocity": 3,
+      "Card Present": 1,
+      "Declined Transactions": 1,
+      "Fraud Label": 1
+    },
+    {
+      "Transaction Amount": 760.00,
+      "Location": "Los Angeles",
+      "Time": "18-01-2025 14:10",
+      "Merchant Category": "Transport",
+      "Device/IP": "Desktop-55.66.77.88",
+      "Logic Patterns": 1,
+      "Velocity": 5,
+      "Card Present": 0,
+      "Declined Transactions": 2,
+      "Fraud Label": 1
+    },
+    {
+      "Transaction Amount": 389.55,
+      "Location": "Miami",
+      "Time": "10-08-2024 12:30",
+      "Merchant Category": "Groceries",
+      "Device/IP": "Mobile-19.29.39.49",
+      "Logic Patterns": 0,
+      "Velocity": 1,
+      "Card Present": 1,
+      "Declined Transactions": 0,
+      "Fraud Label": 0
+    },
+    {
+      "Transaction Amount": 2123.00,
+      "Location": "Austin",
+      "Time": "12-09-2024 11:15",
+      "Merchant Category": "Electronics",
+      "Device/IP": "Desktop-99.88.77.66",
+      "Logic Patterns": 1,
+      "Velocity": 4,
+      "Card Present": 1,
+      "Declined Transactions": 1,
+      "Fraud Label": 0
+    },
+    {
+      "Transaction Amount": 1456.67,
+      "Location": "Phoenix",
+      "Time": "30-10-2024 13:50",
+      "Merchant Category": "Fashion",
+      "Device/IP": "Tablet-67.89.12.34",
+      "Logic Patterns": 0,
+      "Velocity": 3,
+      "Card Present": 1,
+      "Declined Transactions": 2,
+      "Fraud Label": 1
+    },
+    {
+      "Transaction Amount": 900.75,
+      "Location": "Atlanta",
+      "Time": "22-11-2024 16:40",
+      "Merchant Category": "Dining",
+      "Device/IP": "Desktop-88.77.66.55",
+      "Logic Patterns": 1,
+      "Velocity": 2,
+      "Card Present": 0,
+      "Declined Transactions": 0,
+      "Fraud Label": 0
+    },
+    {
+      "Transaction Amount": 660.90,
+      "Location": "Dallas",
+      "Time": "11-12-2024 09:25",
+      "Merchant Category": "Transport",
+      "Device/IP": "Mobile-44.55.66.77",
+      "Logic Patterns": 0,
+      "Velocity": 1,
+      "Card Present": 1,
+      "Declined Transactions": 0,
+      "Fraud Label": 0
+    },
+    {
+      "Transaction Amount": 2000.00,
+      "Location": "Seattle",
+      "Time": "17-01-2025 10:00",
+      "Merchant Category": "Online Services",
+      "Device/IP": "Tablet-33.44.55.66",
+      "Logic Patterns": 1,
+      "Velocity": 6,
+      "Card Present": 0,
+      "Declined Transactions": 3,
+      "Fraud Label": 1
+    },
+    {
+      "Transaction Amount": 478.50,
+      "Location": "San Diego",
+      "Time": "19-02-2025 11:30",
+      "Merchant Category": "Grocery",
+      "Device/IP": "Mobile-22.33.44.55",
+      "Logic Patterns": 0,
+      "Velocity": 2,
+      "Card Present": 1,
+      "Declined Transactions": 0,
+      "Fraud Label": 0
+    },
+    {
+      "Transaction Amount": 330.00,
+      "Location": "Orlando",
+      "Time": "24-03-2025 15:15",
+      "Merchant Category": "Dining",
+      "Device/IP": "Desktop-11.22.33.44",
+      "Logic Patterns": 1,
+      "Velocity": 5,
+      "Card Present": 1,
+      "Declined Transactions": 1,
+      "Fraud Label": 1
+    },
+    {
+      "Transaction Amount": 1425.60,
+      "Location": "Portland",
+      "Time": "03-04-2025 17:05",
+      "Merchant Category": "Electronics",
+      "Device/IP": "Tablet-66.77.88.99",
+      "Logic Patterns": 0,
+      "Velocity": 2,
+      "Card Present": 1,
+      "Declined Transactions": 0,
+      "Fraud Label": 0
+    },
+    {
+      "Transaction Amount": 885.45,
+      "Location": "Philadelphia",
+      "Time": "15-05-2025 09:00",
+      "Merchant Category": "Online Services",
+      "Device/IP": "Mobile-55.66.77.88",
+      "Logic Patterns": 1,
+      "Velocity": 3,
+      "Card Present": 0,
+      "Declined Transactions": 2,
+      "Fraud Label": 1
+    },
+    {
+      "Transaction Amount": 1320.88,
+      "Location": "Charlotte",
+      "Time": "06-06-2025 18:20",
+      "Merchant Category": "Transport",
+      "Device/IP": "Desktop-99.00.11.22",
+      "Logic Patterns": 0,
+      "Velocity": 4,
+      "Card Present": 1,
+      "Declined Transactions": 0,
+      "Fraud Label": 0
+    },
+    {
+      "Transaction Amount": 590.00,
+      "Location": "Las Vegas",
+      "Time": "27-06-2025 20:30",
+      "Merchant Category": "Dining",
+      "Device/IP": "Tablet-88.99.11.22",
+      "Logic Patterns": 0,
+      "Velocity": 3,
+      "Card Present": 1,
+      "Declined Transactions": 0,
+      "Fraud Label": 0
+    },
+    {
+      "Transaction Amount": 1550.25,
+      "Location": "Nashville",
+      "Time": "10-07-2025 07:15",
+      "Merchant Category": "Travel",
+      "Device/IP": "Mobile-77.88.99.00",
+      "Logic Patterns": 1,
+      "Velocity": 5,
+      "Card Present": 0,
+      "Declined Transactions": 3,
+      "Fraud Label": 1
+    },
+    {
+      "Transaction Amount": 950.40,
+      "Location": "San Jose",
+      "Time": "25-08-2025 12:00",
+      "Merchant Category": "Fashion",
+      "Device/IP": "Desktop-66.77.88.99",
+      "Logic Patterns": 0,
+      "Velocity": 2,
+      "Card Present": 1,
+      "Declined Transactions": 0,
+      "Fraud Label": 0
+    },
+    {
+      "Transaction Amount": 1230.75,
+      "Location": "Detroit",
+      "Time": "11-09-2025 19:45",
+      "Merchant Category": "Electronics",
+      "Device/IP": "Tablet-33.22.11.00",
+      "Logic Patterns": 1,
+      "Velocity": 4,
+      "Card Present": 1,
+      "Declined Transactions": 1,
+      "Fraud Label": 1
+    },
+    {
+      "Transaction Amount": 1141.21,
+      "Location": "Houston",
+      "Time": "03-05-2024 16:01",
+      "Merchant Category": "Online Services",
+      "Device/IP": "Desktop-225.66.25.56",
+      "Logic Patterns": 0,
+      "Velocity": 4,
+      "Card Present": 0,
+      "Declined Transactions": 1,
+      "Fraud Label": 0
+    },
+    {
+      "Transaction Amount": 4889.75,
+      "Location": "Los Angeles",
+      "Time": "22-03-2024 16:01",
+      "Merchant Category": "Dining",
+      "Device/IP": "Tablet-203.101.107.34",
+      "Logic Patterns": 0,
+      "Velocity": 3,
+      "Card Present": 0,
+      "Declined Transactions": 1,
+      "Fraud Label": 0
+    }
+  ];
 
-function activeLink() {
-  list.forEach((item) => {
-    item.classList.remove("hovered");
+  // Select table body element
+  const transactionBody = document.getElementById("transactionBody");
+  transactionBody.innerHTML = ""; // Clear existing rows
+
+  // Loop through transactions and populate the table
+  transactions.forEach((transaction) => {
+    const row = document.createElement("tr");
+
+    // Parse and format the date
+    const [datePart, timePart] = transaction["Time"].split(" ");
+    const [day, month, year] = datePart.split("-");
+    const formattedDate = new Date(`${year}-${month}-${day}T${timePart}`);
+
+    // Populate the row with transaction data
+    row.innerHTML = `
+      <td>${transaction["Transaction Amount"]}</td>
+      <td>${transaction["Location"]}</td>
+      <td>${formattedDate.toLocaleString()}</td>
+      <td>${transaction["Merchant Category"]}</td>
+      <td>${transaction["Device/IP"]}</td>
+      <td>${transaction["Logic Patterns"]}</td>
+      <td>${transaction["Velocity"]}</td>
+      <td>${transaction["Card Present"] === 1 ? "Yes" : "No"}</td>
+      <td>${transaction["Declined Transactions"] > 0 ? "Yes" : "No"}</td>
+      <td class="${transaction["Fraud Label"] === 1 ? "fraud" : "safe"}">
+        ${transaction["Fraud Label"] === 1 ? "Fraud" : "Safe"}
+      </td>
+    `;
+
+    // Append row to the table body
+    transactionBody.appendChild(row);
   });
-  this.classList.add("hovered");
 }
 
-list.forEach((item) => item.addEventListener("mouseover", activeLink));
-
-// Menu Toggle
-let toggle = document.querySelector(".toggle");
-let navigation = document.querySelector(".navigation");
-let main = document.querySelector(".main");
-
-toggle.onclick = function () {
-  navigation.classList.toggle("active");
-  main.classList.toggle("active");
-};
-
-// Fetch transaction history and populate table
-window.addEventListener("DOMContentLoaded", async () => {
-  try {
-    // Assuming cardNumber is stored in localStorage after login
-    const cardNumber = localStorage.getItem("cardNumber");
-
-    if (!cardNumber) {
-      console.error("Card number not found in storage");
-      return;
-    }
-
-    const response = await fetch(`http://127.0.0.1:5000/api/transactions/${cardNumber}`, {
-      method: "GET",
-      credentials: "include",
-    });
-
-    const data = await response.json();
-
-    const transactionBody = document.getElementById("transactionBody");
-    transactionBody.innerHTML = ""; // Clear existing rows
-
-    data.forEach((transaction) => {
-      const row = document.createElement("tr");
-
-      row.innerHTML = `
-        <td>${transaction.amount}</td>
-        <td>${transaction.location}</td>
-        <td>${transaction.time}</td>
-        <td>${transaction.category}</td>
-        <td>${transaction.device}</td>
-        <td>${transaction.logic_pattern}</td>
-        <td>${transaction.velocity}</td>
-        <td>${transaction.card_present}</td>
-        <td>${transaction.declined_transactions}</td>
-        <td class="${transaction.fraud === 'Fraud' ? 'fraud' : 'safe'}">${transaction.fraud}</td>
-      `;
-
-      transactionBody.appendChild(row);
-    });
-  } catch (error) {
-    console.error("Error fetching transactions:", error);
-  }
-});
+// Call the function to populate the table
+populateTable();

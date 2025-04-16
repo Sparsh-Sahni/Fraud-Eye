@@ -1,7 +1,8 @@
-const express = require('express');
+import express from 'express';
+import { getTransactionHistory } from '../controllers/transactionController.js';
+
 const router = express.Router();
-const { getTransactionsByCardNumber } = require('../controllers/transactionController');
 
-router.get('/transactions/:cardNumber', getTransactionsByCardNumber);
+router.get('/transactions/:cardNumber', getTransactionHistory);
 
-module.exports = router;
+export default router;
